@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontend engineer</title>
+<meta name="description" content="Portfolio of a frontend engineer: selected work, background and contact.">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0e11" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:,">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-state="loading">
+<a class="skip" href="#main">Skip to content</a>
+<p class="notice" id="notice" hidden></p>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" id="brand" href="#top"><span class="sk" style="width:9ch"></span></a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme" id="theme" type="button" data-mode="system">
+      <svg class="i-system" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+      <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="hero wrap" id="top">
+    <div class="hero-copy" id="hero-copy" aria-busy="true">
+      <span class="sk sk-meta"></span>
+      <span class="sk sk-h1"></span>
+      <span class="sk sk-h1 short"></span>
+      <span class="sk sk-p"></span>
+      <span class="sk sk-p short"></span>
+      <span class="sk sk-btn"></span>
+    </div>
+    <figure class="plate">
+      <div class="shelf" id="shelf" role="img" aria-label="A bookshelf drawn in thin lines, one book per project. Pointing at a book lifts it."></div>
+      <figcaption class="readout" id="readout" aria-hidden="true"></figcaption>
+    </figure>
+  </section>
+
+  <section class="section wrap" id="work" aria-labelledby="work-title">
+    <h2 id="work-title">Selected work</h2>
+    <div class="projects" id="projects" aria-busy="true">
+      <div class="project sk-project"><span class="sk sk-shot"></span><div><span class="sk sk-meta"></span><span class="sk sk-h3"></span><span class="sk sk-p"></span><span class="sk sk-p short"></span></div></div>
+      <div class="project sk-project"><span class="sk sk-shot"></span><div><span class="sk sk-meta"></span><span class="sk sk-h3"></span><span class="sk sk-p"></span><span class="sk sk-p short"></span></div></div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="about" aria-labelledby="about-title" hidden></section>
+  <section class="section wrap" id="contact" aria-labelledby="contact-title" hidden></section>
+</main>
+
+<footer class="foot wrap" id="foot"></footer>
+
+<noscript><p class="wrap fail-inline">This page needs JavaScript to show its content.</p></noscript>
+
+<script src="vendor/hairline-kernel.js" defer></script>
+<script src="content.js" defer></script>
+<script src="shelf.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
