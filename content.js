@@ -135,7 +135,6 @@ window.PORTFOLIO = {
       alt: "Vertex Labs home page: the headline Systems built for the company you're becoming, beside a diagram of a web app, API, job worker, legacy billing and Postgres with four problem areas circled.",
       links: [
         { label: "Live site", href: "https://vertex-labs.org" },
-        { label: "Source", href: "https://github.com/e6uka/vertex-labs" },
       ],
     },
     {
