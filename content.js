@@ -8,6 +8,7 @@ window.PORTFOLIO = {
   bio: [
     "I'm a frontend engineer who builds products end to end across web and mobile: storefronts and the back offices behind them, multi-tenant banking on web and app, and now a hospital records system.",
     "What I care about most is code that scales with the product. Shared components, clear boundaries between tenants, and a codebase a new teammate can find their way around quickly.",
+    "When something keeps slowing me or the people around me down, I build a tool for it. apart started that way: I wanted my coding agent to check work in the browser I'm already signed in to, instead of a blank one, so I made it.",
     "On the web I work in React, Next.js and Vite. On mobile, React Native and Flutter. I'm now learning backend development from scratch on Medly, so I understand the API on the other side of the screen.",
   ],
 
@@ -42,6 +43,7 @@ window.PORTFOLIO = {
       group: "medly",
       short: "medly clinic",
       name: "Medly Clinic",
+      cover: { src: "assets/medly/cover-clinic.png", alt: "" },
       summary: "The web app clinic staff use all day: front desk, doctors, nurses, lab scientists, dispensers and administrators. It covers the whole visit, from registration and the check-in queue through consultations, lab orders and results, dispensing, wards, maternity, vaccines and referrals, to the monthly government returns (NHMIS in Nigeria, MOH 705 in Kenya).",
       body: [
         "Every clinic is its own tenant at its own address, and every query is scoped to it. A record from another clinic returns “not found” rather than “forbidden”, so the API never confirms it exists. Access is built from permissions, not fixed role names: clinics create their own roles, and each person's home screen is assembled from what they're allowed to do.",
@@ -61,6 +63,7 @@ window.PORTFOLIO = {
     {
       short: "marketsquare",
       name: "Marketsquare",
+      cover: { src: "assets/marketsquare/cover.png", alt: "" },
       summary: "Online shop and back office for Marketsquare, a supermarket chain growing across Nigeria. Shoppers pick their nearest branch and shop its own catalogue and prices. I designed most of the screens within the existing brand, then built them from scratch in an MVVM structure: each screen's logic lives in its own view-model hook, with Paystack checkout and Google Places addresses.",
       role: "Screen design and frontend",
       year: "2025 - 2026",
@@ -72,6 +75,8 @@ window.PORTFOLIO = {
     {
       short: "finlake cib",
       name: "Finlake Corporate Internet Banking",
+      family: "finlake",
+      cover: { src: "assets/finlake/cover-cib.png", alt: "" },
       summary: "The web service businesses bank through on Finlake, a modular banking platform where each bank runs on the same codebase with its own data and branding. Data-heavy screens with large grids, charts, spreadsheet import and export, and OTP-protected actions, organised in MVVM with a CI check that enforces the pattern.",
       role: "Frontend engineer",
       year: "2026",
@@ -84,6 +89,7 @@ window.PORTFOLIO = {
       group: "medly",
       short: "medly app",
       name: "Medly app",
+      cover: { src: "assets/medly/cover-app.png", alt: "" },
       kind: "mobile",
       summary: "The app for patients. They sign in with an email code, Apple or Google, then link each clinic they use by showing the front desk a short code. From then on, results, prescriptions, visits and vaccinations from every linked clinic are in one place. Patients can also book a day at a clinic, report allergies and pharmacy medicines, log home readings, and manage profiles for their children.",
       body: [
@@ -107,6 +113,8 @@ window.PORTFOLIO = {
     {
       short: "finlake app",
       name: "Finlake Mobility",
+      family: "finlake",
+      cover: { src: "assets/finlake/cover-mobility.png", alt: "" },
       kind: "mobile",
       summary: "Finlake's mobile banking apps, part of the platform's Mobility Suite, built in Flutter for the same multi-bank setup as the web services.",
       role: "Mobile engineer",
@@ -118,6 +126,7 @@ window.PORTFOLIO = {
     {
       short: "vertex labs",
       name: "Vertex Labs",
+      cover: { src: "assets/vertex/cover.png", alt: "" },
       summary: "Brand and website for Vertex Labs, a software firm that builds new products and fixes the systems companies have outgrown, designed from scratch: the logo, the visual identity and every page, then built and shipped with analytics to see which sections turn visits into enquiries.",
       role: "Logo, design and frontend",
       year: "2026",
@@ -134,6 +143,7 @@ window.PORTFOLIO = {
       group: "medly",
       short: "medly site",
       name: "Medly website",
+      cover: { src: "assets/medly/cover-site.png", alt: "" },
       summary: "The public face of Medly, for clinic owners and administrators in Nigeria and Kenya. It explains what Medly does, shows pricing in naira or US dollars, and takes applications from clinics, which are checked against their licence and company registration before an account is created. It's wired to the Medly backend, so service status and pricing come straight from the live system.",
       body: [
         "The centrepiece is a scroll-driven story that follows one patient through one morning. Her record fills in desk by desk in a faithful copy of the real web app, from the front desk to the consulting room, lab and dispensary, then her evening dose reminder arrives on the Medly app at home. Each step is set against what happens on paper.",
@@ -158,7 +168,6 @@ window.PORTFOLIO = {
         "It has three parts: a command-line tool and background daemon that run the scripts, and a Chrome extension that relays tab and DevTools commands. Each run uses either your Chrome, in its own pink tab group, or a headless Chrome the daemon starts on demand with its own signed-out profile and closes when idle. You pick the default when you install it and can change it in settings; a flag overrides it for one run.",
         "The extension's toolbar popup shows at a glance whether the terminal can reach Chrome, with a one-step fix when it can't. An activity log keeps every run from both browsers with its pages, timing and errors, searchable and filterable by result, browser and time, with the view kept in the URL. Headless runs made while Chrome was closed sync in when it reconnects. A settings page shows the connection, the default browser, the port, a setup checklist and exactly what's stored.",
         "Chrome 136 and later refuse remote debugging on your everyday profile, so apart drives your tabs through the extension's debugger API, and talks to the headless browser over a pipe, so neither opens a debugging port. Scripts run in an isolated sandbox that can only write to a folder for that run, with symlinks resolved before every check. Page snapshots work out each control's role and accessible name and give it a short reference the agent can click.",
-        "Testing turned up real bugs: a reconnect race between two sockets, a socket path too long for macOS, and the daemon crashing on a busy port. Each was fixed and covered by tests, including an end-to-end test that drives Chrome with the extension loaded.",
         "The brand was made for the product: a browser window with a berry-coloured tab on its edge, the agent's tab kept apart from yours. It holds up in light and dark, down to a 16 px toolbar icon.",
       ],
       role: "Product, design and build",

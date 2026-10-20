@@ -106,11 +106,40 @@
     );
   }
 
+  function spread(projects, rows) {
+    const n = projects.length;
+    const family = (i) => projects[i].group || projects[i].family || `#${i}`;
+    const order = [], used = new Array(n).fill(false);
+    let budget = 20000;
+    const clash = (a, b) => a !== b && family(a) === family(b);
+    const rowEnds = () => {
+      for (let r = 0; r < rows; r++) {
+        const row = order.filter((_, k) => k % rows === r);
+        if (row.length > 2 && clash(row[0], row[row.length - 1])) return false;
+      }
+      return true;
+    };
+    const place = () => {
+      if (--budget < 0) return false;
+      if (order.length === n) return rowEnds();
+      for (let i = 0; i < n; i++) {
+        if (used[i]) continue;
+        const k = order.length;
+        if (k >= rows && clash(order[k - rows], i)) continue;
+        used[i] = true; order.push(i);
+        if (place()) return true;
+        used[i] = false; order.pop();
+      }
+      return false;
+    };
+    return place() ? order : projects.map((_, i) => i);
+  }
+
   function mountLanes(host, projects, on) {
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     const SPEED = 26;
-    const ids = projects.map((_, i) => i);
-    const groups = projects.length > 3 ? [ids.filter((i) => i % 2 === 0), ids.filter((i) => i % 2 === 1)] : [ids];
+    const ids = spread(projects, projects.length > 3 ? 2 : 1);
+    const groups = projects.length > 3 ? [ids.filter((_, k) => k % 2 === 0), ids.filter((_, k) => k % 2 === 1)] : [ids];
     const state = { paused: false, offscreen: false, held: false };
     const lanes = groups.map((g, k) => {
       const track = h("div", { class: "track" });
@@ -302,6 +331,10 @@
       ? p.parts.map((j) => ({ mobile: isMobile(projects[j]), imgs: pagesOf(projects[j], 2)[0] || [] }))
       : pagesOf(p, 2).map((imgs) => ({ mobile: isMobile(p), imgs }))
     ).filter((page) => page.imgs.length);
+    const galleryOf = (p) => {
+      const pages = shotsOf(p);
+      return pages.length || !p.cover ? pages : [{ mobile: false, imgs: [{ src: p.cover.src, alt: `${p.name} logo` }] }];
+    };
     const show = (page, alt, small) => (page.mobile ? phones(page.imgs, alt, small) : picture(page.imgs[0].src, alt(page.imgs[0])));
     const partBtn = (j, kind) => h("button", { type: "button", class: "part", onclick: () => open(j, false) },
       h("span", { class: "part-name" }, entries[j].name),
@@ -321,7 +354,7 @@
     }
 
     function paintShot(k) {
-      const p = entries[cur], pages = shotsOf(p);
+      const p = entries[cur], pages = galleryOf(p);
       shot = pages.length ? (k + pages.length) % pages.length : 0;
       const page = pages[shot], alt = (im) => im.alt || `Screenshot of ${p.name}`;
       dlg.dataset.kind = isMobile(p) ? "mobile" : "web";
@@ -330,7 +363,7 @@
     }
 
     function fill(i) {
-      const p = entries[i], pages = shotsOf(p);
+      const p = entries[i], pages = galleryOf(p);
       cur = i;
       const kind = p.overview ? `${p.parts.length} parts` : kindLabel(p);
       $("focus-meta").replaceChildren(...[p.year, kind].filter(Boolean).map((t) => h("span", {}, t)));
@@ -387,7 +420,7 @@
     dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
     dlg.addEventListener("keydown", (e) => {
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-      if (shotsOf(entries[cur]).length < 2) return;
+      if (galleryOf(entries[cur]).length < 2) return;
       paintShot(shot + (e.key === "ArrowRight" ? 1 : -1));
     });
     $("focus-close").onclick = () => dlg.close();
