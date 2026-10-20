@@ -32,7 +32,7 @@
 
 ## Motion
 - Level and purpose: responsive micro-interactions; motion shows what the pointer is over (confirmed via personality)
-- Signature moment: hero shelf, one spine per project; hovered spine tilts out, neighbours lean away staggered; click jumps to the project (confirmed)
+- Signature moment: hero shelf, one spine per project; hovered spine tilts out, neighbours lean away staggered; click opens the project in focus (confirmed)
 
 ## Success
 - Measures: contact clicks and CV downloads (assumed)
@@ -42,5 +42,5 @@
 - Palette tokens: monochrome, no accent hue. Light: ground #f6f7f9, ink #1c1f25, muted #5a606c, line #dde0e6, edge #9ea4af. Dark: ground #0c0e11, ink #dde2ea, muted #969daa, line #252930, edge #5d636e. Emphasis is always dim to bright ink (the Hairline accent rule), never a colour.
 - Type scale: Hanken Grotesk 400/500/600, ratio ~1.25, h1 clamp(2rem..3.375rem), body 16/17px. JetBrains Mono only for the shelf readout, stack lists and the sample notice.
 - Radius and elevation: controls 8, frames 12, figure plate 14. No shadows; depth is a second offset outline (a plate's thickness line).
-- Signature element: project shelf figure (shelf.js on the Hairline kernel), one spine per project plus about/contact spines up to 6; linked both ways with the project list.
+- Signature element: project shelf figure (shelf.js on the Hairline kernel), one spine per project plus about/contact spines up to 6; linked both ways with the work carousel. Selected work is two endless rows drifting in opposite directions; a project opens in an overlay with a small gallery and its own #work/slug URL. Rows pause on hover, focus, drag and while the overlay is open, with a visible Pause control; reduced motion turns them into still, swipeable rows.
 - Log of conscious rule breaks: monospace small labels (a known generated tell) kept for the readout and stack lists, because code is the subject's world and Hairline's readout is mono.
