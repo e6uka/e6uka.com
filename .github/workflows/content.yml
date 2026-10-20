@@ -1,0 +1,32 @@
+name: Content
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  sample-flag:
+    name: Sample content is off
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fail while content.js is marked as sample
+        run: |
+          node -e '
+            const window = {};
+            eval(require("fs").readFileSync("content.js", "utf8"));
+            if (!window.PORTFOLIO) {
+              console.error("::error file=content.js::content.js did not define window.PORTFOLIO.");
+              process.exit(1);
+            }
+            if (window.PORTFOLIO.sample) {
+              console.error("::error file=content.js::sample is true, so the site shows the sample-content banner. Set sample: false once the content is final.");
+              process.exit(1);
+            }
+            console.log("sample is off.");
+          '
