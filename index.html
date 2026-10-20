@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio of a frontend engineer: selected work, background and contact.">
 <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0c0e11" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:,">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,11 +50,19 @@
     </figure>
   </section>
 
-  <section class="section wrap" id="work" aria-labelledby="work-title">
-    <h2 id="work-title">Selected work</h2>
-    <div class="projects" id="projects" aria-busy="true">
-      <div class="project sk-project"><span class="sk sk-shot"></span><div><span class="sk sk-meta"></span><span class="sk sk-h3"></span><span class="sk sk-p"></span><span class="sk sk-p short"></span></div></div>
-      <div class="project sk-project"><span class="sk sk-shot"></span><div><span class="sk sk-meta"></span><span class="sk sk-h3"></span><span class="sk sk-p"></span><span class="sk sk-p short"></span></div></div>
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap work-head">
+      <h2 id="work-title">Selected work</h2>
+      <button class="motion" id="motion" type="button" hidden>
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 7 5.5Z"/></svg>
+        <span class="motion-label">Pause</span>
+      </button>
+    </div>
+    <p class="wrap work-hint" id="work-hint" hidden>Choose a project to see more.</p>
+    <div class="lanes" id="projects" aria-busy="true">
+      <div class="lane sk-lane"><div class="track"><span class="sk sk-card"></span><span class="sk sk-card"></span><span class="sk sk-card"></span><span class="sk sk-card"></span></div></div>
+      <div class="lane sk-lane"><div class="track"><span class="sk sk-card"></span><span class="sk sk-card"></span><span class="sk sk-card"></span><span class="sk sk-card"></span></div></div>
     </div>
   </section>
 
@@ -63,6 +71,35 @@
 </main>
 
 <footer class="foot wrap" id="foot"></footer>
+
+<dialog class="focus" id="focus" aria-labelledby="focus-title">
+  <div class="focus-in">
+    <div class="focus-top">
+      <p class="meta" id="focus-meta"></p>
+      <button class="icon-btn" id="focus-close" type="button" aria-label="Close" title="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="focus-grid">
+      <div class="gallery">
+        <div class="stage" id="focus-stage"></div>
+        <div class="thumbs" id="focus-thumbs" role="group" aria-label="Screens"></div>
+      </div>
+      <div class="parts" id="focus-parts" hidden></div>
+      <div class="focus-body">
+        <h2 id="focus-title"></h2>
+        <p class="focus-role" id="focus-role"></p>
+        <div class="focus-text" id="focus-text"></div>
+        <ul class="stack" id="focus-stack" aria-label="Built with"></ul>
+        <p class="links" id="focus-links"></p>
+      </div>
+    </div>
+    <nav class="focus-nav" aria-label="Other projects">
+      <button class="step prev" id="focus-prev" type="button"></button>
+      <button class="step next" id="focus-next" type="button"></button>
+    </nav>
+  </div>
+</dialog>
 
 <noscript><p class="wrap fail-inline">This page needs JavaScript to show its content.</p></noscript>
 
