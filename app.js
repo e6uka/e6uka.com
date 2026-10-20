@@ -481,7 +481,7 @@
     });
     const extra = [...(c.cv ? [{ label: "CV (PDF)", href: c.cv }] : []), ...(c.links || [])];
     return [
-      h("h2", { id: "contact-title" }, "Hiring for a frontend role?"),
+      h("h2", { id: "contact-title" }, "Hiring, or looking to build something?"),
       h("p", { class: "lede" }, "Email is the fastest way to reach me. I reply within two working days."),
       h("div", { class: "mail-row" }, h("a", { class: "mail", href: `mailto:${c.email}` }, c.email), copyBtn, status),
       extra.length ? h("ul", { class: "elsewhere" }, extra.map((l) => h("li", {}, linkEl(l, "plain")))) : null,
