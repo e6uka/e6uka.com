@@ -368,7 +368,7 @@
       const kind = p.overview ? `${p.parts.length} parts` : kindLabel(p);
       $("focus-meta").replaceChildren(...[p.year, kind].filter(Boolean).map((t) => h("span", {}, t)));
       $("focus-title").textContent = p.name;
-      $("focus-role").textContent = p.role || "";
+      $("focus-role").replaceChildren(...(p.role && p.at ? [`${p.role} at `, linkEl(p.at, "plain")] : [p.role || ""]));
       $("focus-role").hidden = !p.role;
       $("focus-text").replaceChildren(...[p.summary, ...(p.body || [])].filter(Boolean).map((t) => h("p", {}, t)));
       paintParts(p);

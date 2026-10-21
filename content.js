@@ -66,6 +66,7 @@ window.PORTFOLIO = {
       cover: { src: "assets/marketsquare/cover.png", alt: "" },
       summary: "Online shop and back office for Marketsquare, a supermarket chain growing across Nigeria. Shoppers pick their nearest branch and shop its own catalogue and prices. I designed most of the screens within the existing brand, then built them from scratch in an MVVM structure: each screen's logic lives in its own view-model hook, with Paystack checkout and Google Places addresses.",
       role: "Screen design and frontend",
+      at: { label: "SoftGEM Global Technologies", href: "https://softgem.org" },
       year: "2025 - 2026",
       stack: ["React", "TypeScript", "Vite", "TanStack Query", "Zustand", "Tailwind CSS"],
       image: "assets/marketsquare.png",
@@ -79,6 +80,7 @@ window.PORTFOLIO = {
       cover: { src: "assets/finlake/cover-cib.png", alt: "" },
       summary: "The web service businesses bank through on Finlake, a modular banking platform where each bank runs on the same codebase with its own data and branding. Data-heavy screens with large grids, charts, spreadsheet import and export, and OTP-protected actions, organised in MVVM with a CI check that enforces the pattern.",
       role: "Frontend engineer",
+      at: { label: "SoftGEM Global Technologies", href: "https://softgem.org" },
       year: "2026",
       stack: ["React", "TypeScript", "Redux Toolkit", "TanStack Query", "AG Grid", "shadcn/ui"],
       image: "",
@@ -118,6 +120,7 @@ window.PORTFOLIO = {
       kind: "mobile",
       summary: "Finlake's mobile banking apps, part of the platform's Mobility Suite, built in Flutter for the same multi-bank setup as the web services.",
       role: "Mobile engineer",
+      at: { label: "SoftGEM Global Technologies", href: "https://softgem.org" },
       year: "2026",
       stack: ["Flutter", "Dart"],
       image: "",
@@ -191,5 +194,9 @@ window.PORTFOLIO = {
     { group: "Practice", items: ["MVVM architecture", "Multi-tenant apps", "Payments (Paystack)", "CI/CD on AWS and Azure DevOps"] },
   ],
 
-  experience: [],
+  experience: [
+    { role: "Frontend software developer", company: "SoftGEM Global Technologies", years: "2025 - present" },
+    { role: "Project manager", company: "Freelance, building construction", years: "2023 - 2025" },
+    { role: "Network engineering intern", company: "Federal Radio Corporation of Nigeria", years: "2021" },
+  ],
 };
